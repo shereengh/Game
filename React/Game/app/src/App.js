@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import words from "./data";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
 import images from "./images";
 import arrow from "./img/arrow.png";
 import play from "./img/play.png";
@@ -56,7 +57,6 @@ class App extends Component {
           guessed: newG
         });
       }
-      console.log(temp);
     } else {
       const newC = this.state.chances - 1;
       this.setState({
@@ -74,12 +74,12 @@ class App extends Component {
       let image = images[0];
       return (
         <div>
-          <img className="hang" src={image} alt="image" />
+          <img className="hang" src={image} alt="hangIntro" />
           <center>
             <img
               className="dash"
               src={play}
-              alt="image"
+              alt="imageDash"
               onClick={() => this.dashes()}
             />
           </center>
@@ -125,24 +125,26 @@ class App extends Component {
       let image6 = temp[4];
       let letterBoxes = letters.map(letter => {
         return (
-          <button onClick={() => this.selectLetter(letter)}>{letter}</button>
+          <Button variant="light" onClick={() => this.selectLetter(letter)}>
+            {letter}
+          </Button>
         );
       });
 
       return (
         <div>
-          <img className="hang" src={image} alt="image" />
-          <img className="dash" src={image2} alt="image" />
-          <img className="dash" src={image3} alt="image" />
-          <img className="dash" src={image4} alt="image" />
-          <img className="dash" src={image5} alt="image" />
-          <img className="dash" src={image6} alt="image" />
+          <img className="hang" src={image} alt="image1" />
+          <img className="dash" src={image2} alt="image2" />
+          <img className="dash" src={image3} alt="image3" />
+          <img className="dash" src={image4} alt="image4" />
+          <img className="dash" src={image5} alt="image5" />
+          <img className="dash" src={image6} alt="image6" />
           <div className="container-fluid">
             <br></br>
             <br></br>
 
             <center>
-              <ButtonToolbar>{letterBoxes}</ButtonToolbar>
+              <ButtonGroup>{letterBoxes}</ButtonGroup>
             </center>
           </div>
         </div>
@@ -151,12 +153,12 @@ class App extends Component {
       let image = images[0];
       return (
         <div>
-          <img className="hang" src={image} alt="image" />
-          <h1>YOU KILLED HIM!</h1>
+          <img className="hang" src={image} alt="imageHang" />
+          <h1>YOU KILLED HIM! The answer is : "{this.state.gWord}"</h1>
           <img
             className="dash"
             src={arrow}
-            alt="image"
+            alt="imageDash"
             onClick={() =>
               this.setState({
                 chances: 5,
@@ -174,12 +176,14 @@ class App extends Component {
       let win = images["win"];
       return (
         <div>
-          <img className="win" src={win} alt="image" />
-          <h1>HE GETS TO LIVE ANOTHER DAY!</h1>
+          <img className="win" src={win} alt="imageWin" />
+          <h3>
+            HE GETS TO LIVE ANOTHER DAY! The answer is : "{this.state.gWord}"
+          </h3>
           <img
             className="dash"
             src={arrow}
-            alt="image"
+            alt="imageDash"
             onClick={() =>
               this.setState({
                 chances: 5,
