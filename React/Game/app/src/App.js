@@ -118,8 +118,6 @@ class App extends Component {
       let image = images[this.state.chances];
 
       let temp = this.state.array;
-      // props.authors.map(author => <AuthorCard author={author} />);
-      //let displayArray = temp.map(letters);
       let image2 = temp[0];
       let image3 = temp[1];
       let image4 = temp[2];
